@@ -61,8 +61,8 @@ class ConcurrencyGuard
 
     result = @redis.eval(
       ACQUIRE_SCRIPT,
-      keys: [key],
-      argv: [limit, job_id.to_s, Time.current.to_f.to_s]
+      keys: [ key ],
+      argv: [ limit, job_id.to_s, Time.current.to_f.to_s ]
     )
 
     result == 1

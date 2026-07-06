@@ -35,7 +35,7 @@ class JobSubmissionService
     priority_value = begin
       Job.priority_from_label(priority)
     rescue ArgumentError => e
-      return Result.new(success: false, job: nil, errors: [e.message])
+      return Result.new(success: false, job: nil, errors: [ e.message ])
     end
 
     # Handle idempotency: if a job with this key already exists, return it
@@ -71,7 +71,7 @@ class JobSubmissionService
     if existing
       Result.new(success: true, job: existing, errors: [])
     else
-      Result.new(success: false, job: nil, errors: ["Duplicate submission detected"])
+      Result.new(success: false, job: nil, errors: [ "Duplicate submission detected" ])
     end
   end
 end

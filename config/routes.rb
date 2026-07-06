@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   # Job submission and status
-  resources :jobs, only: [:create, :show]
+  resources :jobs, only: [ :create, :show ]
 
   # Health monitoring
   get "health/detailed", to: "health#detailed"

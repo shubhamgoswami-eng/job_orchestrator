@@ -20,15 +20,15 @@ class CreateJobs < ActiveRecord::Migration[7.2]
     end
 
     # Primary scheduling query: find queued jobs ready to run, ordered by priority
-    add_index :jobs, [:state, :scheduled_at, :priority], name: "idx_jobs_scheduling"
+    add_index :jobs, [ :state, :scheduled_at, :priority ], name: "idx_jobs_scheduling"
 
     # Per-client state lookups (concurrency counting, fairness queries)
-    add_index :jobs, [:client_id, :state], name: "idx_jobs_client_state"
+    add_index :jobs, [ :client_id, :state ], name: "idx_jobs_client_state"
 
     # Idempotency enforcement — MySQL allows multiple NULLs in unique indexes
     add_index :jobs, :idempotency_key, unique: true, name: "idx_jobs_idempotency"
 
     # Stall detection: find running jobs to check heartbeats
-    add_index :jobs, [:state, :started_at], name: "idx_jobs_stall_detection"
+    add_index :jobs, [ :state, :started_at ], name: "idx_jobs_stall_detection"
   end
 end

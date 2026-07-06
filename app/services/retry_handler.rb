@@ -68,9 +68,9 @@ class RetryHandler
     # @param retry_count [Integer] current retry count (0-based)
     # @return [Float] delay in seconds
     def calculate_delay(retry_count)
-      base = [BASE_DELAY * (2**retry_count), MAX_DELAY].min
+      base = [ BASE_DELAY * (2**retry_count), MAX_DELAY ].min
       jitter = base * JITTER_FACTOR * (rand * 2 - 1) # ±25%
-      [base + jitter, 1.0].max # Minimum 1 second
+      [ base + jitter, 1.0 ].max # Minimum 1 second
     end
   end
 end

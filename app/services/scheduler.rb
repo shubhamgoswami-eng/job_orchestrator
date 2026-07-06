@@ -51,7 +51,7 @@ class Scheduler
     client_ids.each do |client_id|
       highest_priority = Job.schedulable.for_client(client_id).maximum(:priority) || 0
       weight = PRIORITY_WEIGHTS.fetch(highest_priority, 1)
-      @deficits[client_id] = [@deficits[client_id] + weight, MAX_DEFICIT].min
+      @deficits[client_id] = [ @deficits[client_id] + weight, MAX_DEFICIT ].min
     end
 
     # Round-robin through clients, spending credits

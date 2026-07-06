@@ -28,7 +28,7 @@ RSpec.describe Job, type: :model do
         _future = create(:job, :queued, scheduled_at: 1.hour.from_now)
         _running = create(:job, :running)
 
-        expect(Job.schedulable).to eq([ready])
+        expect(Job.schedulable).to eq([ ready ])
       end
     end
 
@@ -38,7 +38,7 @@ RSpec.describe Job, type: :model do
         high = create(:job, :high_priority, scheduled_at: Time.current)
         medium = create(:job, :medium_priority, scheduled_at: 2.minutes.ago)
 
-        expect(Job.by_scheduling_order).to eq([high, medium, low])
+        expect(Job.by_scheduling_order).to eq([ high, medium, low ])
       end
     end
   end
