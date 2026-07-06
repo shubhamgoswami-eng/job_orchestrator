@@ -1,0 +1,19 @@
+# frozen_string_literal: true
+
+# Sidekiq configuration for the job orchestrator.
+#
+# Three separate queues with distinct purposes:
+#   - scheduler: Periodic scheduling decisions (SchedulerWorker)
+#   - execution: Actual job execution (JobExecutorWorker)
+#   - monitor: Health monitoring (StallMonitorWorker)
+#
+# Separating queues ensures the scheduler and monitor are never
+# blocked by a flood of execution jobs.
+
+:concurrency: <%= ENV.fetch("SIDEKIQ_CONCURRENCY", 10) %>
+
+:queues:
+  - [scheduler, 3]
+  - [monitor, 2]
+  - [execution, 1]
+  - [default, 1]
