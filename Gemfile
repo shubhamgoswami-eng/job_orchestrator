@@ -15,7 +15,7 @@ gem "sidekiq-cron", "~> 2.0"
 gem "redis", "~> 5.0"
 
 # JSON serialization
-gem "oj", "~> 3.16"
+gem "oj", "~> 3.17"
 
 # Rate limiting (abuse protection)
 gem "rack-attack", "~> 6.7"
