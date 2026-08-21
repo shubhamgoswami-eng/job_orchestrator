@@ -8,7 +8,7 @@ gem "mysql2", "~> 0.5"
 gem "puma", ">= 5.0"
 
 # Background job processing
-gem "sidekiq", "~> 7.0"
+gem "sidekiq", "~> 8.1"
 gem "sidekiq-cron", "~> 2.0"
 
 # Redis client
