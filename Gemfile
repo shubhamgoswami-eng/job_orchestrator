@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "~> 7.2.3", ">= 7.2.3.1"
+gem "rails", "~> 8.1.4"
 
 # MySQL adapter
 gem "mysql2", "~> 0.5"
